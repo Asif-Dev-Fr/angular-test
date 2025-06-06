@@ -1,0 +1,57 @@
+/* src/app/components/auth/register/register.component.css */
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #e1e1e1;
+  text-align: center;
+}
+
+h2 {
+  color: #3f51b5; /* Angular Material primary color */
+  margin-bottom: 25px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #f44336; /* Red */
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.success-message {
+  color: #4caf50; /* Green */
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

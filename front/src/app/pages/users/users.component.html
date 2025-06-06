@@ -1,0 +1,64 @@
+<div style="width: 80%; margin: 0 auto">
+  <div class="button-container">
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="changeTab(1)"
+      style="background-color: brown; color: white; margin-right: 4px"
+    >
+      Material UI Table
+    </button>
+    <button mat-flat-button type="button" (click)="changeTab(2)">
+      HTML Table
+    </button>
+  </div>
+  @if (selectedTab === 1) {
+  <table mat-table [dataSource]="userList" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="body">
+      <th mat-header-cell *matHeaderCellDef>Message</th>
+      <td mat-cell *matCellDef="let element">{{ element.body }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  } @else if (selectedTab === 2) {
+  <div>
+    <table class="table2">
+      <thead>
+        <tr>
+          @for (item of displayedColumns; track $index) {
+          <th (click)="sortTableHtml(item)">
+            {{ item }} {{ getSortIcon(item) }}
+          </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @if(userList.length === 0) {
+        <tr>
+          <td colspan="4" style="text-align: center">No users found.</td>
+        </tr>
+        } @else { @for(user of userList; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.title }}</td>
+          <td>{{ user.body }}</td>
+        </tr>
+        } }
+      </tbody>
+    </table>
+  </div>
+  }
+</div>

@@ -1,0 +1,21 @@
+form {
+  margin: 20px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-field {
+  width: 70%;
+  margin: 0 auto;
+}
+
+form button {
+  width: 90px;
+  margin: 0 auto;
+}
+
+form button#closeBtn {
+  width: 110px;
+  margin-right: 5px;
+}

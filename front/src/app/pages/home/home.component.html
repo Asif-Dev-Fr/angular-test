@@ -1,0 +1,80 @@
+<div>
+  <div class="centered">
+    <div class="list">
+      <div class="title">
+        <h3>{{ title }}</h3>
+        <div style="cursor: pointer" (click)="addItem()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="add icon"
+            fontIcon="add_circle_outline"
+          ></mat-icon>
+        </div>
+      </div>
+      <div class="content">
+        @if(todos$ | async; as todos) {
+        <div>
+          @if (todos.length > 0) {
+          <mat-list>
+            @for (todo of todos; track todo.id) {
+            <mat-list-item style="cursor: pointer">
+              <h3 matListItemTitle (click)="updateItem(todo)">
+                @for(letter of todo.text; track $index) {
+                <span
+                  [ngStyle]="{ color: $index % 2 !== 0 ? 'blue' : 'purple' }"
+                >
+                  {{ $index % 2 === 0 ? letter.toUpperCase() : letter }}
+                </span>
+                }
+              </h3>
+              <p matListItemLine (click)="updateItem(todo)">
+                <span class="demo-2">{{ todo.createAt }}</span>
+              </p>
+              <mat-icon matListItemIcon (click)="deleteItem(todo)">
+                delete
+              </mat-icon>
+            </mat-list-item>
+            }
+          </mat-list>
+
+          }
+        </div>
+        }
+        <!-- @if(fakeListUser.length > 0) {
+        <div>
+          @for(user of fakeListUser; track user.id) {
+          <div style="display: flex">
+            <div style="margin-right: 5px">
+              {{ user.userName.toUpperCase() }}
+            </div>
+            <div>
+              @for(letter of user.email.split(""); track $index) {
+              <span [ngStyle]="{ color: $index % 2 === 0 ? 'red' : 'inherit' }">
+                {{ letter }}
+              </span>
+              }
+            </div>
+          </div>
+
+          } 
+        </div>
+        } 
+        -->
+      </div>
+      <div>Task counter {{ (todos$ | async)?.length || 0 }}</div>
+    </div>
+  </div>
+  @if (openAddItem && inputTest) {
+  <div class="centered">
+    <app-form
+      style="width: 100%; text-align: center"
+      (closeForm)="closeTodoForm()"
+      [messageRecuDuParent]="inputTest"
+      [updateTodo]="selectedTodo"
+    ></app-form>
+  </div>
+  }
+  <div class="centered">
+    <app-users></app-users>
+  </div>
+</div>

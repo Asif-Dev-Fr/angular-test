@@ -1,0 +1,69 @@
+<div class="register-container">
+  <h2>アカウントを作成</h2>
+
+  @if (successMessage) {
+  <div class="success-message">{{ successMessage }}</div>
+  } @if (errorMessage) {
+  <div class="error-message">{{ errorMessage }}</div>
+  }
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>ユーザー名</mat-label>
+      <input matInput formControlName="username" />
+      @if (isFieldInvalid('username')) {
+      <mat-error>ユーザー名は必須です。</mat-error>
+      } @else if (registerForm.get('username')?.errors?.['minlength']) {
+      <mat-error>ユーザー名は2文字以上である必要があります。</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>メールアドレス</mat-label>
+      <input matInput formControlName="email" type="email" />
+      @if (isFieldInvalid('email')) { @if
+      (registerForm.get('email')?.errors?.['required']) {
+      <mat-error>メールアドレスは必須です。</mat-error>
+      } @else if (registerForm.get('email')?.errors?.['email']) {
+      <mat-error>メールの形式が無効です。</mat-error>
+      } }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>パスワード</mat-label>
+      <input matInput formControlName="password" type="password" />
+      @if (isFieldInvalid('password')) { @if
+      (registerForm.get('password')?.errors?.['required']) {
+      <mat-error>パスワードが必要です。</mat-error>
+      } @else if (registerForm.get('password')?.errors?.['minlength']) {
+      <mat-error>パスワードは6文字以上である必要があります。</mat-error>
+      } }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>パスワードを認証する</mat-label>
+      <input matInput formControlName="confirmPassword" type="password" />
+      @if (isFieldInvalid('confirmPassword')) { @if
+      (registerForm.get('confirmPassword')?.errors?.['required']) {
+      <mat-error>パスワードの確認が必要です。</mat-error>
+      } @else if
+      (registerForm.get('confirmPassword')?.errors?.['passwordMismatch']) {
+      <mat-error>パスワードが一致しません。</mat-error>
+      } }
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      登録する
+    </button>
+  </form>
+
+  <p>
+    すでにアカウントをお持ちですか？ <br />
+    <a routerLink="/login">こちらからログインしてください</a>
+  </p>
+</div>

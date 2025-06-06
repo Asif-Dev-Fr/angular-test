@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup" (submit)="submit($event)">
+  <mat-form-field class="text-field">
+    <mat-label>新タスク</mat-label>
+    <textarea
+      matInput
+      placeholder="Description"
+      id="text"
+      name="text"
+      formControlName="text"
+    ></textarea>
+    @if (isFieldValid('text')) {
+    <mat-error class="error">This field is required.</mat-error>
+    }
+  </mat-form-field>
+  <div style="margin-bottom: 5px">
+    <button
+      mat-flat-button
+      type="button"
+      id="closeBtn"
+      (click)="closeForm.emit()"
+    >
+      閉じる
+    </button>
+    @if(updateTodo && updateTodo.id) {
+    <button mat-flat-button type="submit">変更</button>} @else {
+    <button mat-flat-button type="submit">追加</button>}
+  </div>
+</form>

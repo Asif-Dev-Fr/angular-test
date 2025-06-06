@@ -1,0 +1,49 @@
+table {
+  background-color: rgb(200, 200, 200);
+  margin-top: 20px;
+}
+
+.button-container {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.table2 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Roboto, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table2 th,
+.table2 td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.table2 th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+  text-transform: capitalize;
+  cursor: pointer;
+  min-width: 35px;
+}
+
+.table2 tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table2 tr:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.table2 td[colspan="4"] {
+  /* Style for the "No users found" cell */
+  font-style: italic;
+  color: #777;
+}

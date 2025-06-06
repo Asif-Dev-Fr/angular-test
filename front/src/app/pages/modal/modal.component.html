@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>削除確認</h2>
+
+<mat-dialog-content>
+  <div>このタスクが削除されます</div>
+  <div>⇩</div>
+  <div>"{{ data.todo.text }}"</div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">キャセル</button>
+  <button mat-flat-button color="warn" (click)="onConfirm()">確認</button>
+</mat-dialog-actions>

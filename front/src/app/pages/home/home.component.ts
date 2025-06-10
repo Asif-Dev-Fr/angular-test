@@ -138,6 +138,12 @@ export class HomeComponent implements OnInit {
               console.log('Valeur finale reçue par l\'abonné:', finalValue);
             });
           */
+
+          /*
+            Vous utilisez pipe() pour définir ce que vous voulez faire avec les données d'un Observable (filtrer, transformer, etc.).
+            
+            Vous utilisez subscribe() pour démarrer le processus et réagir aux données résultantes.
+          */
           .pipe(
             // Appel de la méthode de suppression
             tap(() => {

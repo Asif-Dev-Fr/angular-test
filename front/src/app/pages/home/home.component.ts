@@ -108,12 +108,36 @@ export class HomeComponent implements OnInit {
     });
 
     // S'abonne au résultat de la modale après sa fermeture
+    // subscribe = comme un useEffect
+    /*
+      Angular
+      myService.getData().subscribe({
+      next: (data) => console.log(data),
+      error: (err) => console.error(err)
+      });
+
+      React 
+      myService.getDataPromise() // Supposons que cette fonction retourne une Promise
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
+    */
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         // Si l'utilisateur a cliqué sur 'Supprimer' dans la modale
         console.log('Confirmation de suppression pour la tâche :', todo.id);
         this.homeService
           .delete(todo.id)
+          /*
+            pipe() est comme un ensemble de stations de traitement ou de filtres que vous ajoutez sur ce tuyau. 
+            Example
+            numbers$.pipe(
+              filter(num => num % 2 === 0), // Opérateur 1: Ne garde que les nombres pairs
+              map(num => num * 10),         // Opérateur 2: Multiplie chaque nombre par 10
+              tap(val => console.log('Valeur après map:', val)) // Opérateur 3: Effet secondaire (pour débogage)
+            ).subscribe(finalValue => {
+              console.log('Valeur finale reçue par l\'abonné:', finalValue);
+            });
+          */
           .pipe(
             // Appel de la méthode de suppression
             tap(() => {

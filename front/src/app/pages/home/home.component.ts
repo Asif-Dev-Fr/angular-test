@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersComponent } from '../users/users.component';
+import { UserListAngularStyleComponent } from '../user-list-angular-style/user-list-angular-style.component';
 
 interface FakeUser {
   id: number;
@@ -37,6 +38,7 @@ interface FakeUser {
     MatListItemLine,
     MatListItemIcon,
     UsersComponent,
+    UserListAngularStyleComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

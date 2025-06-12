@@ -1,0 +1,57 @@
+<div style="width: 80%; margin: 0 auto">
+  <div style="text-align: center; margin-bottom: 20px">
+    <!-- Indicateur de chargement -->
+    @if (loading) {
+    <p style="color: rgb(255, 255, 0); font-weight: bold">
+      Chargement des données...
+    </p>
+    }
+
+    <!-- Message d'erreur -->
+    @if (errorMessage) {
+    <p style="color: red; font-weight: bold">{{ errorMessage }}</p>
+    <button mat-flat-button color="primary" (click)="fetchData()">
+      Réessayer
+    </button>
+    }
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px">
+    <thead>
+      <tr style="background-color: #f2f2f2">
+        @for (item of displayedColumns; track $index) {
+        <th (click)="sortTableHtml(item)">
+          {{ item }} {{ getSortIcon(item) }}
+        </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Utilise directement userList car il est rempli par le .subscribe() dans le TS -->
+      @if (userList.length > 0) { @for (user of userList; track user.id) {
+      <tr style="border-bottom: 1px solid #eee">
+        <td style="padding: 8px; border: 1px solid #ddd">{{ user.id }}</td>
+        <td style="padding: 8px; border: 1px solid #ddd">{{ user.title }}</td>
+        <td style="padding: 8px; border: 1px solid #ddd">{{ user.body }}</td>
+      </tr>
+      } } @else {
+      <tr>
+        <td
+          [attr.colspan]="displayedColumns.length"
+          style="padding: 8px; text-align: center"
+        >
+          Aucune donnée à afficher ou chargement...
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px; text-align: center">
+    <button mat-flat-button color="primary" (click)="changeTab(1)">
+      Tab 1
+    </button>
+    <button mat-flat-button color="accent" (click)="changeTab(2)">Tab 2</button>
+    <p>Selected Tab: {{ selectedTab }}</p>
+  </div>
+</div>

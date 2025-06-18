@@ -78,6 +78,8 @@
     <app-users></app-users>
   </div>
   <div class="centered">
-    <app-user-list-angular-style></app-user-list-angular-style>
+    <app-user-list-angular-style
+      (addHomeComponentText)="showMessage($event)"
+    ></app-user-list-angular-style>
   </div>
 </div>

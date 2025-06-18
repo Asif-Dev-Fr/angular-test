@@ -25,6 +25,12 @@ interface FakeUser {
   email: string;
 }
 
+interface FakeArray {
+  id: number;
+  message: string;
+  creationDate: Date;
+}
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -57,6 +63,7 @@ export class HomeComponent implements OnInit {
   selectedTodo: Partial<Todo> = {};
   openDeleteModal: boolean = false;
   fakeListUser: FakeUser[] = [];
+  newArray: FakeArray[] = [];
 
   fakeUsers: FakeUser[] = [
     {
@@ -182,5 +189,21 @@ export class HomeComponent implements OnInit {
     this.openAddItem = false; // Cache le formulaire
     console.log("Formulaire de tâche fermé par l'enfant.");
     this.loadTodos(); // IMPORTANT : Recharge les tâches pour mettre à jour l'affichage de la liste
+  }
+
+  showMessage(addText: string): void {
+    console.log('addText', addText);
+    const newMessageObject: FakeArray = {
+      id:
+        this.newArray.length > 0
+          ? this.newArray[this.newArray.length - 1].id + 1
+          : 1,
+      message: addText,
+      creationDate: new Date(),
+    };
+
+    console.log(newMessageObject, 'newMessageObject');
+
+    this.newArray.push(newMessageObject);
   }
 }

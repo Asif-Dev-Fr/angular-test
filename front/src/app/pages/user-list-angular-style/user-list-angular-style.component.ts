@@ -1,4 +1,11 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core'; // <<< Ajoute OnInit, OnDestroy, inject
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  inject,
+  Output,
+  EventEmitter,
+} from '@angular/core'; // <<< Ajoute OnInit, OnDestroy, inject
 import { CommonModule } from '@angular/common'; // Important pour @if, @for, async pipe
 import { MatTableModule } from '@angular/material/table';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
@@ -43,6 +50,8 @@ export class UserListAngularStyleComponent implements OnInit, OnDestroy {
 
   // Injection du service HttpClient
   private http = inject(HttpClient);
+
+  @Output() addHomeComponentText = new EventEmitter<string>();
 
   constructor() {
     // La récupération des données (appel asynchrone) ne doit pas être faite dans le constructeur.
@@ -242,6 +251,14 @@ export class UserListAngularStyleComponent implements OnInit, OnDestroy {
     if (this.currentSortColumn === column) {
       return this.currentSortDirection === 'asc' ? ' ▲' : ' ▼'; // Flèche haut ou bas
     }
-    return ''; // Pas d'icône si la colonne n'est pas triée
+    return '▼'; // Pas d'icône si la colonne n'est pas triée
+  }
+
+  // Exemple de méthode qui sera appelée par un événement (ex: clic sur un bouton)
+  onButtonClick(): void {
+    const textToSend = 'Texte envoyé depuis le composant enfant !';
+    // <<< MODIFICATION ICI : Émet la chaîne de caractères >>>
+    this.addHomeComponentText.emit(textToSend);
+    console.log('Enfant a émis :', textToSend);
   }
 }

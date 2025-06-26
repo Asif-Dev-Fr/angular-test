@@ -1,0 +1,42 @@
+<div>
+  <div class="sort">
+    <div class="name" (click)="sortProducts('name')">
+      Name {{ getSortIcon("name") }}
+    </div>
+    <div class="category" (click)="sortProducts(`category`)">
+      Category {{ getSortIcon("category") }}
+    </div>
+    <div class="price" (click)="sortProducts(`price`)">
+      Price {{ getSortIcon("price") }}
+    </div>
+  </div>
+  <div class="loading">
+    @if(loading) {
+    <div>Loading</div>
+    }
+  </div>
+  <div class="filter">
+    <select name="Category" (change)="filterCategory($event)">
+      @for(category of categoryList; track $index) {
+      <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </div>
+  @if(productList.length > 0) {
+  <div>
+    @for(product of productList; track $index) {
+    <div class="productList">
+      <div class="productImage">
+        <img [src]="product.imageUrl" [alt]="product.name" />
+      </div>
+      <div class="productDetails">
+        <div class="productName">{{ product.name }}</div>
+        <div class="productDescription">{{ product.description }}</div>
+        <div class="productCategory">{{ product.category }}</div>
+        <div class="productPrice">{{ product.price }}€</div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

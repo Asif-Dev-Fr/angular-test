@@ -1,0 +1,79 @@
+.productList {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  height: 100px;
+  margin-bottom: 4px;
+}
+
+.productList .productImage img {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  height: 98px;
+  margin-top: 3.5px;
+  box-sizing: border-box;
+}
+
+.productList .productDetails {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
+  border-left: 3px dashed black;
+  box-sizing: border-box;
+  width: 530px;
+  height: 100px;
+  padding: 8px;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  margin-bottom: 4px;
+}
+
+.sort .name {
+  width: 33%;
+  text-align: center;
+  border: 3px solid rgb(195, 0, 0);
+  padding: 4px 0px;
+  cursor: pointer;
+}
+
+.sort .category {
+  width: 33%;
+  text-align: center;
+  border-right: 3px solid rgb(195, 0, 0);
+  border-bottom: 3px solid rgb(195, 0, 0);
+  border-top: 3px solid rgb(195, 0, 0);
+  padding: 4px 0px;
+  cursor: pointer;
+}
+
+.sort .price {
+  width: 33%;
+  text-align: center;
+  border-right: 3px solid rgb(195, 0, 0);
+  border-bottom: 3px solid rgb(195, 0, 0);
+  border-top: 3px solid rgb(195, 0, 0);
+  padding: 4px 0px;
+  cursor: pointer;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.filter select {
+  height: 100%;
+  width: 200px;
+  border-radius: 8px;
+  padding: 0px 8px;
+}

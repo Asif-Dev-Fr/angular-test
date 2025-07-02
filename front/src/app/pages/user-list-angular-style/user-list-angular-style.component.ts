@@ -89,7 +89,7 @@ export class UserListAngularStyleComponent implements OnInit, OnDestroy {
 
         // Opérateur map(): Transforme les données émises par l'Observable.
         // Ici, il prend le tableau complet et renvoie les 20 premiers éléments.
-        map((response: User[]) => response.slice(0, 20)),
+        map((response: User[]) => response.slice(0, 5)),
 
         // Opérateur tap(): Exécute des effets secondaires (comme des console.log) SANS modifier le flux.
         // Utile pour le débogage ou pour déclencher des actions qui n'affectent pas les données passantes.

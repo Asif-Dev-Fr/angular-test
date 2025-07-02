@@ -1,0 +1,50 @@
+<div class="detail-container">
+  <h2>Détails du Produit</h2>
+
+  <!-- Messages d'état (chargement, erreur) -->
+  @if (loading) {
+  <p style="color: blue">Chargement des détails du produit...</p>
+  } @if (errorMessage) {
+  <p style="color: red; font-weight: bold">{{ errorMessage }}</p>
+  <a [routerLink]="['/']" class="back-link">Retour à la liste des produits</a>
+  }
+
+  <!-- Affichage des détails du produit si l'Observable a émis une valeur -->
+  @if (product$ | async; as product) { @if (product) {
+  <div class="product-card">
+    <img
+      [src]="
+        product.imageUrl ||
+        'https://placehold.co/150x150/CCCCCC/000000?text=No+Image'
+      "
+      alt="{{ product.name }}"
+      class="product-image"
+    />
+    <h3>{{ product.name }}</h3>
+    <p><strong>ID :</strong> {{ product.id }}</p>
+    <p><strong>Catégorie :</strong> {{ product.category }}</p>
+    <p>
+      <strong>Prix :</strong>
+      {{ product.price | currency : "EUR" : "symbol" : "1.2-2" }}
+    </p>
+    <p><strong>Description :</strong> {{ product.description }}</p>
+  </div>
+  <a [routerLink]="['/products']" class="back-link"
+    >Retour à la liste des produits</a
+  >
+  } @else {
+  <!-- Ce bloc est atteint si product$ émet undefined (par exemple, après un catchError) -->
+  <p style="color: orange; font-weight: bold">
+    Détails du produit introuvables.
+  </p>
+  <a [routerLink]="['/products']" class="back-link"
+    >Retour à la liste des produits</a
+  >
+  } } @else if (!loading && !errorMessage) {
+  <!-- Ce bloc est atteint si product$ est null et qu'il n'y a pas d'erreur/chargement -->
+  <p style="color: orange; font-weight: bold">
+    Aucun produit n'a été sélectionné ou trouvé.
+  </p>
+  <a [routerLink]="['/']" class="back-link">Retour à la liste des produits</a>
+  }
+</div>

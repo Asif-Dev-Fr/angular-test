@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,7 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
   {
     path: '**',
     redirectTo: '',

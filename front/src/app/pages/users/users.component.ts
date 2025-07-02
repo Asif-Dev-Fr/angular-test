@@ -29,7 +29,7 @@ export class UsersComponent {
         'https://jsonplaceholder.typicode.com/posts'
       );
       const jsonReponse: User[] = await response.json();
-      this.userList = [...jsonReponse.slice(0, 20)];
+      this.userList = [...jsonReponse.slice(0, 5)];
       console.log('this.userList', this.userList);
     } catch (error) {
       console.error(error);

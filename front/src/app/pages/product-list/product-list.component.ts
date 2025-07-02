@@ -2,10 +2,19 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
 import { catchError, filter, finalize, map, of, Subscription, tap } from 'rxjs';
 import { Product } from '../../models/product.model';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink, // <<< NOUVEAU : Ajout de RouterLink
+  ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
   standalone: true,
